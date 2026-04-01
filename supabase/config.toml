@@ -1,0 +1,15 @@
+project_id = "ucbhstxsfwxnlhknvhnx"
+
+[functions.create-pix]
+enabled = true
+verify_jwt = false
+import_map = "./functions/create-pix/deno.json"
+entrypoint = "./functions/create-pix/index.ts"
+
+[functions.webhook]
+enabled = true
+verify_jwt = false
+
+[functions.cron-billing]
+enabled = true
+verify_jwt = true
