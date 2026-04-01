@@ -15,7 +15,7 @@ export default function ProcedimentosPage() {
   const [items, setItems] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", price: "", duration: "", commission: "" });
+  const [form, setForm] = useState({ name: "", price: "", duration: "" });
 
   useEffect(() => { if (clinicId) load(); }, [clinicId]);
 
@@ -26,7 +26,7 @@ export default function ProcedimentosPage() {
 
   const handleSave = async () => {
     if (!form.name || !clinicId) return;
-    const payload = { name: form.name, price: Number(form.price) || 0, duration: Number(form.duration) || 60, commission: Number(form.commission) || 0, clinic_id: clinicId };
+    const payload = { name: form.name, price: Number(form.price) || 0, duration: Number(form.duration) || 60, clinic_id: clinicId };
     if (editId) {
       const { error } = await supabase.from("procedures").update(payload).eq("id", editId).eq("clinic_id", clinicId!);
       if (error) { toast.error("Erro ao salvar procedimento."); return; }
@@ -44,16 +44,17 @@ export default function ProcedimentosPage() {
     if (!confirm("Excluir este procedimento?")) return;
     await supabase.from("procedures").delete().eq("id", id).eq("clinic_id", clinicId!);
     toast.success("Procedimento excluído");
+    load();
   };
 
   const openEdit = (item: any) => {
     setEditId(item.id);
-    setForm({ name: item.name, price: item.price.toString(), duration: item.duration.toString(), commission: (item.commission || 0).toString() });
+    setForm({ name: item.name, price: item.price.toString(), duration: item.duration.toString() });
     setOpen(true);
   };
 
   const resetForm = () => {
-    setForm({ name: "", price: "", duration: "", commission: "" });
+    setForm({ name: "", price: "", duration: "" });
     setEditId(null);
     setOpen(false);
   };
@@ -74,10 +75,9 @@ export default function ProcedimentosPage() {
               <DialogHeader><DialogTitle>{editId ? "Editar" : "Novo"} Procedimento</DialogTitle></DialogHeader>
               <div className="space-y-4 pt-2">
                 <div className="space-y-2"><Label>Nome</Label><Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Ex: Limpeza de Pele" /></div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2"><Label>Preço (R$)</Label><Input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} /></div>
                   <div className="space-y-2"><Label>Duração (min)</Label><Input type="number" value={form.duration} onChange={(e) => setForm({ ...form, duration: e.target.value })} /></div>
-                  <div className="space-y-2"><Label>Comissão (%)</Label><Input type="number" value={form.commission} onChange={(e) => setForm({ ...form, commission: e.target.value })} /></div>
                 </div>
                 <Button onClick={handleSave} className="w-full gradient-primary border-0 text-primary-foreground">Salvar</Button>
               </div>
@@ -100,7 +100,6 @@ export default function ProcedimentosPage() {
                   <span className="flex items-center gap-1"><DollarSign className="h-3.5 w-3.5" />R$ {Number(item.price).toLocaleString()}</span>
                   <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{item.duration} min</span>
                 </div>
-                {item.commission > 0 && <p className="text-xs text-muted-foreground mt-1">Comissão: {item.commission}%</p>}
               </CardContent>
             </Card>
           ))}
