@@ -29,8 +29,17 @@ export default function AdminDashboardPage() {
   const [exportingId, setExportingId] = useState<string | null>(null);
   const [importingClinicId, setImportingClinicId] = useState<string | null>(null);
   const [clinicFilter, setClinicFilter] = useState<"all" | "trial" | "active" | "cancelled">("all");
+  const [now, setNow] = useState(Date.now());
 
   useEffect(() => { loadData(); }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(Date.now());
+      loadData();
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   const loadData = async () => {
     const { data: cl } = await supabase.from("clinics").select("*").order("created_at", { ascending: false });
@@ -131,7 +140,7 @@ export default function AdminDashboardPage() {
 
   const getTrialDaysLeft = (c: any) => {
     if (c.subscription_status !== "trial" || !c.trial_end) return null;
-    const days = Math.ceil((new Date(c.trial_end).getTime() - Date.now()) / 86400000);
+    const days = Math.ceil((new Date(c.trial_end).getTime() - now) / 86400000);
     return days;
   };
   const adminProfit = adminIncome - adminExpense;
