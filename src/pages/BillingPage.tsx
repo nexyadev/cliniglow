@@ -57,7 +57,7 @@ export default function BillingPage() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ clinic_id: clinicId, email: user.email, value: 197, user_id: user.id }),
+          body: JSON.stringify({ clinic_id: clinicId, email: user.email, value: 97, user_id: user.id }),
         }
       );
 
@@ -168,7 +168,7 @@ export default function BillingPage() {
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold font-display">R$197</span>
+                  <span className="text-4xl font-extrabold font-display">R$97</span>
                   <span className="text-muted-foreground">/mês</span>
                 </div>
                     <p className="text-sm text-muted-foreground mt-1">Pagamento via PIX</p>

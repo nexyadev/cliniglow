@@ -128,7 +128,7 @@ export default function AdminDashboardPage() {
   const activeCount = clinics.filter(c => c.subscription_status === "active").length;
   const trialCount = clinics.filter(c => c.subscription_status === "trial").length;
   const cancelledCount = clinics.filter(c => c.subscription_status === "cancelled" || c.subscription_status === "expired").length;
-  const mrr = activeCount * 197;
+  const mrr = activeCount * 97;
   const arr = mrr * 12;
   const churnRate = clinics.length > 0 ? ((cancelledCount / clinics.length) * 100).toFixed(1) : "0";
   const adminIncome = adminFinancials.filter(f => f.type === "income").reduce((s, f) => s + Number(f.amount), 0);

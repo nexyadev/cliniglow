@@ -67,7 +67,7 @@ serve(async (req) => {
       .from("saas_payments")
       .insert({
         clinic_id,
-        amount: 197,
+        amount: 97,
         status: "pending",
       })
       .select("id")
@@ -79,7 +79,7 @@ serve(async (req) => {
     }
 
     const mpBody = {
-      transaction_amount: 197,
+      transaction_amount: 97,
       description: "CliniGlow - Plano Mensal",
       payment_method_id: "pix",
       payer: { email: "cliente@cliniglow.com" },

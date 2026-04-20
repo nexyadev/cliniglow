@@ -69,7 +69,7 @@ export default function LoginPage() {
           </div>
 
           <h2 className="text-3xl font-display font-bold text-white leading-tight">
-            Gestão completa para sua clínica de estética
+            Gestão completa para sua clínica
           </h2>
 
           <ul className="space-y-4">

@@ -1,6 +1,6 @@
 # CliniGlow
 
-Sistema completo de gestão para clínicas de estética.
+Sistema completo de gestão para clínicas.
 
 ## Funcionalidades
 

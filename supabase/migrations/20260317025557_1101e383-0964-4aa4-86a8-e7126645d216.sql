@@ -163,7 +163,7 @@ ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
 CREATE TABLE public.saas_payments (
   id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   clinic_id UUID NOT NULL REFERENCES public.clinics(id) ON DELETE CASCADE,
-  amount NUMERIC NOT NULL DEFAULT 147,
+  amount NUMERIC NOT NULL DEFAULT 97,
   status TEXT NOT NULL DEFAULT 'pending',
   payment_date TIMESTAMP WITH TIME ZONE,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()

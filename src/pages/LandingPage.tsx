@@ -98,7 +98,7 @@ export default function LandingPage() {
             </span>
             <h1 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl mx-auto">
               Gestão completa para sua
-              <span className="text-gradient"> clínica de estética</span>
+              <span className="text-gradient"> clínica</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
               Agenda, clientes, financeiro, estoque, fotos antes e depois e
@@ -135,7 +135,7 @@ export default function LandingPage() {
             Tudo que sua clínica precisa
           </h2>
           <p className="text-muted-foreground text-center mb-12 max-w-xl mx-auto">
-            Funcionalidades pensadas para clínicas de estética que querem
+            Funcionalidades pensadas para clínicas que querem
             crescer.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -183,7 +183,7 @@ export default function LandingPage() {
             </h3>
             <div className="flex items-baseline justify-center gap-1 mb-6">
               <span className="text-4xl font-extrabold text-foreground">
-                R$197
+                R$97
               </span>
               <span className="text-muted-foreground">/mês</span>
             </div>
